@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Enrollment List{% endblock %}
+{% block content %}
+
+<h2>Enrollment List</h2>
+
+<a href="{% url 'enrollment_create' %}">+ New Enrollment</a>
+<ul>
+  {% for enrollment in enrollments %}
+  <li>
+      <a href="{% url 'enrollment_detail' enrollment.pk %}">
+        Student: {{ enrollment.student.first_name }} —
+        Course: {{ enrollment.course.name }} —
+        Date: {{ enrollment.enrollment_date }}
+      </a>
+      <a href="{% url 'enrollment_update' enrollment.pk %}">Edit</a>
+  </li>
+  {% endfor%}
+</ul>
+{% endblock %}

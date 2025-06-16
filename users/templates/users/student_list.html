@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Students List{% endblock %}
+
+{% block content %}
+<h1>Students</h1>
+
+<a href="{% url 'student_create' %}">+ Create Student</a>
+<ul>
+    {% for student in students %}
+        <li>
+            <a href="{% url 'student_detail' student.pk %}">
+                {{ student.first_name }} {{ student.last_name }} - {{ student.email }}
+            </a>
+            <a href="{% url 'student_update' student.pk %}">Edit</a>
+        </li>
+    {% empty %}
+        <li>No students found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

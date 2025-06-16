@@ -1,0 +1,40 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}School Management{% endblock %}</title>
+    <style>
+        body{
+            background-color: black;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        <nav>
+            <a href="{% url 'student_list' %}">Students</a> |
+            <a href="{% url 'teacher_list' %}">Teachers</a> |
+            <a href="{% url 'course_list' %}">Courses</a> |
+            <a href="{% url 'enrollment_list' %}">Enrollments</a>
+
+            <span>Welcome, {{ user.username }}!</span> |
+            <form method="post" action="{% url 'account_logout' %}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" style="background:none; border:none; color:#fff; cursor:pointer; padding:0; font:inherit; text-decoration:underline;">
+                    Logout
+                </button>
+            </form>
+        </nav>
+    {% else %}
+        <a href="{% url 'account_login' %}">Login</a>
+    {% endif %}
+    <hr>
+
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

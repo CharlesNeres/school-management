@@ -1,0 +1,18 @@
+{%extends 'base.html' %}
+
+{% block title %}Course Detail {% endblock %}
+
+{% block content %}
+<h2>Course Detail</h2>
+
+<a href="{% url 'course_delete' course.pk %}">Delete</a>
+
+<p><strong>Name: </strong> {{ course.name }} </p>
+<p><strong>Description: {{ course.description }}</strong></p>
+<p><strong>Start Date: {{ course.start_date }}</strong></p>
+<p><strong>End Date: {{ course.end_date }}</strong></p>
+
+<p>
+    <a href="{% url 'course_list' %}">Back to list</a>
+</p>
+{% endblock %}

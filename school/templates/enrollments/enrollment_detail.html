@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Enrollment Detail {% endblock %}
+
+{% block content %}
+<h2>Enrollment Detail</h2>
+
+<a href="{% url 'enrollment_delete' enrollment.pk %}">Delete</a>
+
+<p><strong>Student:</strong>{{ enrollment.student.first_name }}</p>
+<p><strong>Course:</strong>{{ enrollment.course.name }}</p>
+<p><strong>Date:</strong>{{ enrollment.enrollment_date }}</p>
+
+<a href="{% url 'enrollment_list' %}">Back to list</a>
+{% endblock %}

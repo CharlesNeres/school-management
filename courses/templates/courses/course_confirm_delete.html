@@ -1,0 +1,22 @@
+{% extends 'base.html '%}
+
+{% block title %}Confirm Deletion{% endblock %}
+
+{% block content %}
+<h2>Confirm Deletion</h2>
+
+<p>Are you sure you want to delete this Course?</p>
+
+<ul>
+    <li><strong>Name: </strong> {{ course.name }} </li>
+    <li><strong>Description: {{ course.description }}</strong></li>
+    <li><strong>Start Date: {{ course.start_date }}</strong></li>
+    <li><strong>End Date: {{ course.end_date }}</strong></li>
+</ul>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Yes, delete</button>
+    <a href="{% url 'course_detail' course.pk %}">Cancel</a>
+</form>
+{% endblock %}

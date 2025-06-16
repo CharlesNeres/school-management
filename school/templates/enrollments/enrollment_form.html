@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {% if form.instance.pk %}
+    Edit Enrollment
+  {% else %}
+    Create New Enrollment
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+<h2>
+  {% if form.instance.pk %}
+    Edit Enrollment
+  {% else %}
+    Create New Enrollment
+  {% endif %}
+</h2>
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Save</button>
+</form>
+
+<a href="{% url 'enrollment_list' %}">Back to list</a>
+
+{% endblock %}
